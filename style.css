@@ -26,6 +26,23 @@ body {
   text-align: center;
 }
 
+.logo-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.logo-img {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #1d4ed8;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
+  background-color: #0b0f19;
+}
+
 .badge {
   display: inline-block;
   background-color: #172554;
@@ -92,6 +109,23 @@ body {
   font-weight: 600;
 }
 
+.credits {
+  padding-top: 20px;
+  border-top: 1px solid #1f2937;
+  font-size: 15px;
+  color: #94a3b8;
+  line-height: 1.8;
+}
+
+.credits-label {
+  display: block;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
 .credits-list {
   display: flex;
   flex-wrap: wrap;
@@ -109,6 +143,7 @@ body {
   font-size: 14px;
 }
 
+.credits a,
 .thanks-section a {
   color: #38bdf8;
   text-decoration: none;
@@ -120,6 +155,7 @@ body {
   font-size: 14px;
 }
 
+.credits a:hover,
 .thanks-section a:hover {
   background-color: #1e293b;
   border-color: #38bdf8;
