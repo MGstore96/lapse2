@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" manifest="css.manifest">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PS4 [5.05] 7.00 - 14.02 FW GoldHEN Host by GamerHack</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script>
+history.replaceState(null, null, 'index.html');
+var histlength = history.length;
+history.go(-histlength);
+
+function DLProgress(e) {
+  Percent = (Math.round(e.loaded / e.total * 100));
+  window.msgs.innerHTML = "Installing Offline Cache: " + Percent + "%";
+}
+
+function DisplayCacheProgress() {
+  window.msgs.innerHTML = "Cache Installed Successfully ✔";
+  setTimeout(function () {
+    window.msgs.innerHTML = "Now Close And Re-Open Your Browser ...";
+  }, 1500);
+}
+
+window.applicationCache.addEventListener("progress", DLProgress, false);
+window.applicationCache.oncached = function (e) { DisplayCacheProgress(); };
+window.applicationCache.onupdateready = function (e) { DisplayCacheProgress(); };
+window.applicationCache.onerror = function (e) {
+  window.msgs.innerHTML = "Error Installing Cache! - Clear and Re-Open Your Browser ...";
+};
+</script>
+
+<div class="card">
+  <div class="badge">OFFLINE CACHE • FW 10.00 – 11.02</div>
+  <h1 class="title">PS4 [5.05] 7.00 - 14.02 FW GoldHEN Host by GamerHack</h1>
+  <hr class="divider">
+
+  <div class="status-box">
+    <div id="msgs">Starting Cache Installation...</div>
+  </div>
+
+  <div class="thanks-section">
+    <h3>TERIMA KASIH KEPADA:</h3>
+    <div class="credits-list">
+      <a href="https://twitter.com/_AlAzif">@_AlAzif</a>
+      <span class="credit-item">ChendoChap</span>
+      <a href="https://x.com/Kameleonre_">@Kameleonre_</a>
+      <span class="credit-item">SiSTR0</span>
+      <span class="credit-item">Abc</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
