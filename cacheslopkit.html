@@ -7,30 +7,6 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<script>
-history.replaceState(null, null, 'index.html');
-var histlength = history.length;
-history.go(-histlength);
-
-function DLProgress(e) {
-  Percent = (Math.round(e.loaded / e.total * 100));
-  window.msgs.innerHTML = "Menginstal Cache Offline: " + Percent + "%";
-}
-
-function DisplayCacheProgress() {
-  window.msgs.innerHTML = "Cache Berhasil Diinstal";
-  setTimeout(function () {
-    window.location.replace("index.html");
-  }, 1500);
-}
-
-window.applicationCache.addEventListener("progress", DLProgress, false);
-window.applicationCache.oncached = function (e) { DisplayCacheProgress(); };
-window.applicationCache.onupdateready = function (e) { DisplayCacheProgress(); };
-window.applicationCache.onerror = function (e) {
-  window.msgs.innerHTML = "Kesalahan Saat Menginstal Cache! - Bersihkan dan Buka Kembali Browser Anda ...";
-};
-</script>
 
 <div class="card">
   <div class="logo-wrapper">
@@ -49,23 +25,68 @@ window.applicationCache.onerror = function (e) {
     <h3>TERIMA KASIH KEPADA:</h3>
     <div class="credits-list">
       <span class="credit-item">GamerHack93</span>
-            <span class="credit-item">sleirsgoevy</span>
-            <span class="credit-item">TheFlow</span>
-            <span class="credit-item">Flatz</span>
-            <span class="credit-item">Egycnq</span>
-            <span class="credit-item">Jordy</span>
-            <span class="credit-item">Sonic-Iso</span>
-            <span class="credit-item">Abc</span>
-            <span class="credit-item">Ufm42</span>
-            <span class="credit-item">Prb29327239</span>
-            <span class="credit-item">Feyzee61</span>
-            <span class="credit-item">AlAzif</span>
-            <span class="credit-item">ChendoChap</span>
-            <span class="credit-item">Kameleonre_</span>
-            <span class="credit-item">SiSTR0</span
+      <span class="credit-item">sleirsgoevy</span>
+      <span class="credit-item">TheFlow</span>
+      <span class="credit-item">Flatz</span>
+      <span class="credit-item">Egycnq</span>
+      <span class="credit-item">Jordy</span>
+      <span class="credit-item">Sonic-Iso</span>
+      <span class="credit-item">Abc</span>
+      <span class="credit-item">Ufm42</span>
+      <span class="credit-item">Prb29327239</span>
+      <span class="credit-item">Feyzee61</span>
+      <span class="credit-item">AlAzif</span>
+      <span class="credit-item">ChendoChap</span>
+      <span class="credit-item">Kameleonre_</span>
+      <span class="credit-item">SiSTR0</span>
     </div>
   </div>
 </div>
 
+<script>
+history.replaceState(null, null, 'index.html');
+var histlength = history.length;
+history.go(-histlength);
+
+var msgsEl = document.getElementById("msgs");
+var isRedirecting = false;
+
+function setMsg(text) {
+  if (msgsEl) {
+    msgsEl.innerHTML = text;
+  }
+}
+
+function redirectSameWindow() {
+  if (isRedirecting) return;
+  isRedirecting = true;
+  setTimeout(function () {
+    window.location.replace("index.html");
+  }, 1500);
+}
+
+function DLProgress(e) {
+  if (e && e.total > 0) {
+    var percent = Math.round((e.loaded / e.total) * 100);
+    setMsg("Menginstal Cache Offline: " + percent + "%");
+  } else {
+    setMsg("Menginstal Cache Offline...");
+  }
+}
+
+function DisplayCacheProgress() {
+  setMsg("Cache Berhasil Diinstal");
+  redirectSameWindow();
+}
+
+if (window.applicationCache) {
+  window.applicationCache.addEventListener("progress", DLProgress, false);
+  window.applicationCache.oncached = function () { DisplayCacheProgress(); };
+  window.applicationCache.onupdateready = function () { DisplayCacheProgress(); };
+  window.applicationCache.onerror = function () {
+    setMsg("Kesalahan Saat Menginstal Cache! - Bersihkan dan Buka Kembali Browser Anda ...");
+  };
+}
+</script>
 </body>
 </html>
